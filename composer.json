@@ -1,0 +1,55 @@
+{
+    "name": "cb/rest-framework",
+    "description": "CB Rest Framework",
+    "type": "framework",
+    "license": "MIT",
+    "homepage": "https://github.com/isaacperaza/cb-rest-framework",
+    "support": {
+        "issues": "https://github.com/isaacperaza/cb-rest-framework/issues",
+        "source": "https://github.com/isaacperaza/cb-rest-framework"
+    },
+    "authors": [
+        {
+            "name": "Isaac Peraza",
+            "email": "isaac.peraza@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.3",
+        "vlucas/phpdotenv": "^3.3",
+        "beberlei/assert": "3.2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0",
+        "mockery/mockery": "^1.0",
+        "squizlabs/php_codesniffer": "*",
+        "johnkary/phpunit-speedtrap": "*",
+        "jakub-onderka/php-parallel-lint": "*",
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cb\\RestFramework\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "build": "composer lint:syntax && composer lint:style && composer test:units",
+        "lint:beautify": "vendor/bin/phpcbf --standard=PSR2 --extensions=php --severity=1 src/ tests/ -v",
+        "lint:style": "vendor/bin/phpcs --standard=PSR2 --extensions=php --severity=1 src/ tests/ -v",
+        "lint:syntax": "vendor/bin/parallel-lint src/ tests/",
+        "test:coverage": "vendor/bin/phpunit --coverage-text --coverage-html=build/coverage/html",
+        "test:units": "vendor/bin/phpunit"
+    }
+}
